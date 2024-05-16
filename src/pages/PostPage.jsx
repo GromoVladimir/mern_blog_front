@@ -134,7 +134,7 @@ export const PostPage = () => {
              </div>
 
              {
-              (user?._id === post.user._id || user.status === 'Administrator') && (
+              (user?._id === post.user._id || ((user?.status === 'Administrator' || user?.status === 'Moderator') && post.user.status !== 'Administrator') ) && (
                 <div className='flex gap-3 mt-4'>
                 <button
                 onClick = {removePostHandler}

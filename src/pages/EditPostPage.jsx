@@ -12,7 +12,6 @@ export const EditPostPage = () => {
   const [oldImage, setOldImage] = useState('')
   const [newImage, setNewImage] = useState('')
 
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const params = useParams()
 

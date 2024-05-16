@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const CommentItem = ({cmt}) => {
     let avatar;
@@ -10,6 +11,7 @@ export const CommentItem = ({cmt}) => {
     }
 
     return (
+        <Link to={`/user/${cmt.user?._id}`}>
         <div className='flex items-center gap-3 py-2'>
             <div className="flex items-center justify-center shrink-0 rounded-full w-10 h-10 bg-blue-300 text-s">
                 {avatar}
@@ -19,5 +21,6 @@ export const CommentItem = ({cmt}) => {
                 <div className="text-gray-300 text-[17px]">{cmt?.text}</div>
             </div>
         </div>
+        </Link>
     );
 }

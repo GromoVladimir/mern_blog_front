@@ -35,6 +35,10 @@ export const ProfilePage = () => {
                         <p>{user?.name}</p>
                     </div>
                     <div className='border p-2 mt-4 text-white'>
+                        <p>Статус:</p>
+                        <p>{user?.status}</p>
+                    </div>
+                    <div className='border p-2 mt-4 text-white'>
                         <p>Электронная почта:</p>
                         <p>{user?.email}</p>
                     </div>

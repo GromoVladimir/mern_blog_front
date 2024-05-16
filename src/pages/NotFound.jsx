@@ -7,7 +7,7 @@ const NotFound = () => {
       <div className="absolute left-1/2 top-[45%] translate-y-[-50%] translate-x-[-50%] z-20 flex flex-col items-center">
         <h1 className="text-[100px] md:text-[300px] font-medium">404</h1>
         <p className="text-sm md:text-[20px] md:leading-[30px] leading-[21px] -mt-10 md:-mt-20 text-center md:text-left">
-          Данной страницы больше нет. Чтобы вернуться на предыдущую страницу, нажмите кнопку "Вернуться".
+          Данной страницы нет. Чтобы вернуться на предыдущую страницу, нажмите кнопку "Вернуться".
         </p>
         <button
           onClick={() => navigate(-1)}

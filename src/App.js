@@ -1,6 +1,6 @@
 import {Layout} from './components/Layout.jsx';
 import './index.css';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, redirect} from 'react-router-dom';
 import {MainPage} from './pages/MainPage.jsx';
 import {PostsPage} from './pages/PostsPage.jsx';
 import {PostPage} from './pages/PostPage.jsx';
@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { checkIsAuth, getMe } from './redux/features/auth/authSlice.js';
 import NotFound from './pages/NotFound.jsx';
 import { ProfilePage } from './pages/ProfilePage.jsx';
+import { UserPage } from './pages/UserPage.jsx';
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
         <Route path='/register' element = {<RegisterPage/>}/>
         <Route path='/error' element = {<NotFound/>}/>
         <Route path='/me' element = {<ProfilePage/>}/>
+        <Route path='/user/:id' element = {<UserPage/>}/>
+        
       </Routes>
       
       <ToastContainer position = 'bottom-right'/>

@@ -1,9 +1,10 @@
 import React, {useRef, useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import { createPost } from '../redux/features/post/postSlice'
 import { checkIsAuth } from '../redux/features/auth/authSlice'
 import axios from '../utils/axios'
+import {toast} from 'react-toastify';
 
 export const AddPostPage = () => {
   const [title, setTitle] = useState('')
@@ -11,17 +12,24 @@ export const AddPostPage = () => {
   const [image, setImage] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { user } = useSelector( state => state.auth);
+
+  console.log(user)
 
   const submitHandler = async () => {
     try{
-      const fields = {
-        title, 
-        text,
-        imageUrl: image,
+      if (user?.status === "Banned") {
+        toast('Вы забанены')
+      } else {
+        const fields = {
+          title, 
+          text,
+          imageUrl: image,
+        }
+        const {data} = await axios.post('/posts', fields)
+        const id = data._id;
+        navigate(`/${id}`)
       }
-      const {data} = await axios.post('/posts', fields)
-      const id = data._id;
-      navigate(`/${id}`)
     }
       catch (error) {
         console.log(error)
