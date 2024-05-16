@@ -73,7 +73,7 @@ export const EditPostPage = () => {
         <input type='file'  className='hidden' onChange={ handelChangeFile}/>
       </label>
       <div className='flex py-2 items-center'>
-        {newImage? (<img src={`http://localhost:4444${newImage}`} alt={newImage.name}/>) : oldImage&&(<img src={`http://localhost:4444${oldImage}`} alt='oldImage'/>) }
+        {newImage? (<img src={`process.env.REACT_APP_API_URL${newImage}`} alt={newImage.name}/>) : oldImage&&(<img src={`process.env.REACT_APP_API_URL${oldImage}`} alt='oldImage'/>) }
       </div>
 
       <label className='text-s text-white opacity-70'>

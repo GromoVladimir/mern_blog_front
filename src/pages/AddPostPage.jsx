@@ -67,7 +67,7 @@ export const AddPostPage = () => {
         <input type='file' className='hidden' onChange={ handelChangeFile}/>
       </label>
       <div className='flex object-cover py-2 '>
-        { image && (<img src={`http://localhost:4444${image}`} alt={image.name}/>)}
+        { image && (<img src={`process.env.REACT_APP_API_URL${image}`} alt={image.name}/>)}
       </div>
       <label className='text-s text-white opacity-70'>
         Заголовок поста:

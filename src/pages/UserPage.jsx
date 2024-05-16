@@ -95,7 +95,7 @@ export const UserPage = (req, res) => {
                     </div> */}
                     <div className='border p-2 mt-4 text-white'>
                         <p>Аватарка:</p>
-                        {currentUser?.avatarUrl && <img src={`http://localhost:4444${currentUser?.avatarUrl}`} alt={currentUser?.name} className='w-40 h-40 rounded-full' />}
+                        {currentUser?.avatarUrl && <img src={`process.env.REACT_APP_API_URL${currentUser?.avatarUrl}`} alt={currentUser?.name} className='w-40 h-40 rounded-full' />}
                     </div>
 
                     {

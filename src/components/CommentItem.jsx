@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const CommentItem = ({cmt}) => {
     let avatar;
     if (cmt?.user?.avatarUrl) {
-        avatar = <img src={`http://localhost:4444${cmt?.user.avatarUrl}`} alt="avatar" className="rounded-full w-10 h-10" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
+        avatar = <img src={`process.env.REACT_APP_API_URL${cmt?.user.avatarUrl}`} alt="avatar" className="rounded-full w-10 h-10" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
     } else {
         const initials = cmt?.user?.name?.trim().toUpperCase().split(' ').map(word => word[0]).join('');
         avatar = <div className="flex items-center justify-center rounded-full w-10 h-10 bg-blue-300 text-s">{initials}</div>;

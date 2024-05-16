@@ -48,7 +48,7 @@ export const ProfilePage = () => {
                     </div> */}
                     <div className='border p-2 mt-4 text-white'>
                         <p>Аватарка:</p>
-                        {user?.avatarUrl && <img src={`http://localhost:4444${user?.avatarUrl}`} alt={user?.name} className='w-40 h-40 rounded-full' />}
+                        {user?.avatarUrl && <img src={`process.env.REACT_APP_API_URL${user?.avatarUrl}`} alt={user?.name} className='w-40 h-40 rounded-full' />}
                     </div>
                 </div>
             </div>
