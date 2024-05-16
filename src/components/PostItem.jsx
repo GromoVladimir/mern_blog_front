@@ -17,7 +17,7 @@ export const PostItem = ({post}) => {
             post.imageUrl ? 'flex rounded-sm h-80': 'flex rounded-sm'
         }>
             {post.imageUrl && (
-                <img src={`process.env.REACT_APP_API_URL${post?.imageUrl}`} alt="img" className='object-cover w-full'/>
+                <img src={`${process.env.REACT_APP_API_URL}${post?.imageUrl}`} alt="img" className='object-cover w-full'/>
             )}
         </div>
         <div className='text-white text-xl'>{post?.title}</div>

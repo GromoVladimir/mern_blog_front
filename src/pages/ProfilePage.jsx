@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import axios from '../utils/axios';
+import { checkIsAuth } from '../redux/features/auth/authSlice'
+import {useNavigate} from 'react-router-dom'
 
 export const ProfilePage = () => {
     const [user, setUser] = useState();
+    const navigate = useNavigate()
+    const isAuth = useSelector(checkIsAuth)
+  
+    if (!window.localStorage.getItem('token') && !isAuth) {
+      navigate('/autn/not')
+    }
 
     const fetchUserData = useCallback(async() => {
         try {
@@ -48,7 +56,7 @@ export const ProfilePage = () => {
                     </div> */}
                     <div className='border p-2 mt-4 text-white'>
                         <p>Аватарка:</p>
-                        {user?.avatarUrl && <img src={`process.env.REACT_APP_API_URL${user?.avatarUrl}`} alt={user?.name} className='w-40 h-40 rounded-full' />}
+                        {user?.avatarUrl && <img src={`${process.env.REACT_APP_API_URL}${user?.avatarUrl}`} alt={user?.name} className='w-40 h-40 rounded-full' />}
                     </div>
                 </div>
             </div>

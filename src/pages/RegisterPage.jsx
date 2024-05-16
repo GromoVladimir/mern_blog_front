@@ -57,7 +57,7 @@ export const RegisterPage = () => {
                 Выберите фото на аватарку:
                 <input type='file' className='hidden' onChange={handleImageChange}/>
             </label>
-            {avatarUrl && <img src={`process.env.REACT_APP_API_URL${avatarUrl}`} alt="avatar-preview" className="w-20 h-20 mt-2" />}
+            {avatarUrl && <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="avatar-preview" className="w-20 h-20 mt-2" />}
             <label className='text-s text-white'>
                 Придумайте имя:
                 <input type='text'

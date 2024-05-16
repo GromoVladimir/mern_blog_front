@@ -4,6 +4,8 @@ import axios from '../utils/axios';
 import {useParams} from 'react-router-dom'
 import {AiTwotoneSmile, AiTwotoneFrown} from 'react-icons/ai';
 import {toast} from 'react-toastify';
+import { checkIsAuth } from '../redux/features/auth/authSlice'
+import {useNavigate} from 'react-router-dom'
 
 export const UserPage = (req, res) => {
 
@@ -11,6 +13,12 @@ export const UserPage = (req, res) => {
 
     const id = useParams().id;
     const [currentUser, setCurrentUser] = useState();
+    const navigate = useNavigate()
+    const isAuth = useSelector(checkIsAuth)
+  
+    if (!window.localStorage.getItem('token') && !isAuth) {
+      navigate('/autn/not')
+    }
 
     const fetchUserData = useCallback(async() => {
         try {
@@ -18,6 +26,7 @@ export const UserPage = (req, res) => {
             setCurrentUser(data)
         } catch (error) {
             console.error(error)
+            navigate('/error')
         }
     }, []);
 
@@ -95,7 +104,7 @@ export const UserPage = (req, res) => {
                     </div> */}
                     <div className='border p-2 mt-4 text-white'>
                         <p>Аватарка:</p>
-                        {currentUser?.avatarUrl && <img src={`process.env.REACT_APP_API_URL${currentUser?.avatarUrl}`} alt={currentUser?.name} className='w-40 h-40 rounded-full' />}
+                        {currentUser?.avatarUrl && <img src={`${process.env.REACT_APP_API_URL}${currentUser?.avatarUrl}`} alt={currentUser?.name} className='w-40 h-40 rounded-full' />}
                     </div>
 
                     {

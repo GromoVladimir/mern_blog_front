@@ -1,9 +1,19 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import axios from '../utils/axios'
 import { PostItem } from '../components/PostItem';
+import {useSelector} from 'react-redux'
+import { checkIsAuth } from '../redux/features/auth/authSlice'
+import {useNavigate} from 'react-router-dom'
+
 
 export const PostsPage = () => {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate()
+  const isAuth = useSelector(checkIsAuth)
+
+  if (!window.localStorage.getItem('token') && !isAuth) {
+    navigate('/autn/not')
+  }
   
   const fetchMyPosts = useCallback(async() => {
     try{
